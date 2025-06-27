@@ -1,0 +1,20 @@
+{
+  // don’t even show “data/…” in the Explorer
+  "files.exclude": {
+    "**/data/**": true
+  },
+
+  // don’t search in there
+  "search.exclude": {
+    "**/data/**": true
+  },
+
+  // don’t watch for file changes in there
+  "files.watcherExclude": {
+    "**/data/**": true
+  },
+  
+  // prevent following symlinks under data
+  "search.followSymlinks": false
+
+}

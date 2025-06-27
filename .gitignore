@@ -1,0 +1,5 @@
+data/
+tools/
+experiments/blenderTransformsTester/results/*
+experiments/blenderTransformsTester/TrimmedDataset1/*
+experiments/places365Tester/resnet18_places365.pth.tar
