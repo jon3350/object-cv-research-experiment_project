@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>360° Panorama Viewer</title>
+  <!-- Pannellum’s CSS/JS from CDN -->
+  <link  href="https://cdn.pannellum.org/2.5/pannellum.css" rel="stylesheet"/>
+  <script src="https://cdn.pannellum.org/2.5/pannellum.js"></script>
+  <style>
+    /* fullscreen the viewer */
+    html, body { margin:0; height:100%; }
+    #panorama { width:100%; height:100%; }
+  </style>
+</head>
+<body>
+  <div id="panorama"></div>
+  <script>
+    pannellum.viewer('panorama',{
+      type:        'equirectangular',
+      panorama:    'results/4563cb05.png',   // your rendered pano (location based on where this script lives not cd)
+      autoLoad:    true,
+      showZoomCtrl:true
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Equirectangular Viewer</title>
+    <!-- Pannellum’s CSS/JS from CDN -->
+    <link  href="https://cdn.pannellum.org/2.5/pannellum.css" rel="stylesheet"/>
+    <script src="https://cdn.pannellum.org/2.5/pannellum.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px;}
+        .scene { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+        .scene img { display: block; max-width: 30%; height: auto;}
+        .scene .interactive_viewer { display: block; max-width: 25%; max-height: auto;}
+    </style>
+</head>
+<body>
+    <h1>Dataset Equirectangular Viewer</h1>
+    <h2>Scene Name</h2>
+    <div class="scene">
+        <img src="results/28abacaa.png" alt="">
+        <img src="results/7bdba554.png" alt="">
+        <div class="interactive_viewer" id="panoTest" style="width: 600; height: 300px;"></div>
+        <script>
+            pannellum.viewer("panoTest", {
+                type:        'equirectangular',
+                panorama:    'results/7bdba554.png',
+                autoLoad:    true,
+                showZoomCtrl:true
+            })
+        </script>
+    </div>
+</body>
+</html>

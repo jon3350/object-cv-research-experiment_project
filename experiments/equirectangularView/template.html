@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dataset Equirectangular Viewer</title>
+    <!-- Pannellum’s CSS/JS from CDN -->
+    <link  href="https://cdn.pannellum.org/2.5/pannellum.css" rel="stylesheet"/>
+    <script src="https://cdn.pannellum.org/2.5/pannellum.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px;}
+        .scene { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+        .scene img { display: block; max-width: 30%; height: auto;}
+        .scene .interactive_viewer { display: block; max-width: 25%; max-height: auto; width: 600px; height: 300px}
+        #controls { margin-bottom: 1em; }
+        #panorama { width: 800px; height: 400px; }
+    </style>
+</head>
+<body>
+    <h1>Dataset Equirectangular Viewer</h1>
+    <div id="controls">
+        <label>
+        Scene ID:
+        <input type="text" id="sceneInput" placeholder="e.g. 10d42aba"/>
+        </label>
+        <button id="loadBtn">Load</button>
+    </div>
+
+    <!-- single pano container -->
+    <div id="panorama"></div>
+
+    <script>
+        // Build a JS scenes object from your Jinja list
+        const config = {
+        default: { firstScene: null },
+        scenes: {
+            {% for id in scene_id_list %}
+            "{{ id }}": {
+            type:         'equirectangular',
+            panorama:     'results/{{ id }}/Equirect_Image.png',
+            autoLoad:     false,
+            showZoomCtrl: true
+            }{% if not loop.last %},{% endif %}
+            {% endfor %}
+        }
+        };
+
+        // Instantiate exactly one viewer
+        const viewer = pannellum.viewer('panorama', config);
+
+        // Wire up the Load button
+        document.getElementById('loadBtn').addEventListener('click', () => {
+        const sceneId = document.getElementById('sceneInput').value.trim();
+        if (config.scenes[sceneId]) {
+            viewer.loadScene(sceneId);
+        } else {
+            alert(`Unknown scene: ${sceneId}`);
+        }
+        });
+    </script>
+
+    {% for scene_id in scene_id_list %}
+        <h2>{{ scene_id }}</h2>
+        <div class="scene">
+            <img src="results/{{ scene_id }}/Normal_Image.png" alt="">
+            <img src="results/{{ scene_id }}/Equirect_Image.png" alt="">
+        </div>
+    {% endfor %}
+</body>
+</html>
