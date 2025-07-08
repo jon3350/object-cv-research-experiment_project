@@ -5,3 +5,10 @@ experiments/blenderTransformsTester/TrimmedDataset1/*
 experiments/places365Tester/resnet18_places365.pth.tar
 sites/
 job.slurm
+experiments/objRemovalExp/__pycache__
+experiments/objRemovalExp/logs
+experiments/objRemovalExp/extractImportantObjects.py
+experiments/objRemovalExp/results
+experiments/objRemovalExp/results2
+experiments/objRemovalExp/resnet18_places365.pth.tar
+savedRemovals

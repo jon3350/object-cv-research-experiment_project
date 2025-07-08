@@ -2,6 +2,9 @@ import bpy
 import transformObjects
 import os
 import json
+from mathutils import Vector
+import re
+
 
 def render_and_log(render_file_path):
     bpy.context.view_layer.update()
@@ -63,14 +66,65 @@ if __name__ == "__main__":
     # get active camera
     cam = bpy.context.scene.camera
 
-    # print("CORNERS:", transformObjects.corners_in_camera_frame("694360_LargeShelfFactory", solve_state) )
+    # for key in obj_list:
+    #     blender_obj = bpy.data.objects[ solve_state["objs"][key]["obj"] ]
+    #     bbox = transformObjects.create_bounding_box_cube( blender_obj )
+    #     render_and_log(os.path.join(output_folder, f"{scene_id}_{key}" ))
+    #     bpy.data.objects.remove(bbox, do_unlink=True)
 
-    # transformObjects.remove_object("694360_LargeShelfFactory", True, solve_state)
+    # key = "window.004"
+    # blender_obj = bpy.data.objects[ solve_state["objs"][key]["obj"] ]
+    # bbox = transformObjects.create_bounding_box_cube( blender_obj )
+    # for vert in bbox.bound_box:
+    #     print(Vector(vert))
+    # print(transformObjects.count_vertices(bbox))
+    # bbox.scale = (200.0, 200.0, 200.0)
+    # bpy.context.view_layer.update()
+    # render_and_log(os.path.join(output_folder, f"{scene_id}_{key}" ))
+    # bpy.data.objects.remove(bbox, do_unlink=True)
 
-    # print( transformObjects.get_objects_in_camera_frame(solve_state) )
+    obj_list = transformObjects.get_objects_in_camera_frame(solve_state)
+    cleaned_keys = [ re.sub(r"[^A-Za-z]", "", k) for k in obj_list if "Factory" in k]
+    obj_key_set = set(cleaned_keys)
+    print(obj_key_set)
 
-    for key in transformObjects.get_objects_in_camera_frame(solve_state):
-        old_flags = transformObjects.remove_object(key, True, solve_state)
-        render_and_log(os.path.join(output_folder, f"{scene_id}_{key}" ))
-        transformObjects.restore_object(old_flags)
+    # for obj_group in obj_key_set:
 
+    #     bound_box_list = []
+
+    #     # create the bounding boxes
+    #     for json_obj in solve_state["objs"]:
+    #         if not obj_group in json_obj:
+    #             continue
+            
+    #         blender_obj = bpy.data.objects[ solve_state["objs"][json_obj]["obj"] ]
+    #         bbox = transformObjects.create_bounding_box_cube( blender_obj )
+    #         bound_box_list.append(bbox)
+    
+    #     # render the images
+    #     render_and_log(os.path.join(output_folder, f"{obj_group}" ))
+
+    #     # undo stuff
+    #     for bbox in bound_box_list:
+    #         bpy.data.objects.remove(bbox, do_unlink=True)
+
+
+    for obj_group in obj_key_set:
+
+        first_old_flags = None
+
+        # delete all relevant objects
+        for json_obj in solve_state["objs"]:
+            if not obj_group in json_obj:
+                continue
+            
+            blender_obj = bpy.data.objects[ solve_state["objs"][json_obj]["obj"] ]
+            old_flags = transformObjects.remove_object(json_obj, True, solve_state)
+            if not first_old_flags:
+                first_old_flags = old_flags
+    
+        # render the images
+        render_and_log(os.path.join(output_folder, f"a{obj_group}" ))
+
+        # undo stuff
+        transformObjects.restore_object(first_old_flags)
