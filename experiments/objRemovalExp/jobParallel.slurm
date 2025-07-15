@@ -2,14 +2,14 @@
 #SBATCH --nodes=1             # nodes requested
 #SBATCH --ntasks=1            # tasks requested
 #SBATCH --cpus-per-task=4
-#SBATCH --gres=gpu:1          # the number of GPUs requested
+#SBATCH --gres=gpu:2          # the number of GPUs requested
 #SBATCH --mem=24G              # memory
 #SBATCH --nice=10000
-#SBATCH --output=logs/slurm-%A_%a.out
-#SBATCH --error=logs/slurm-%A_%a.err
-#SBATCH -t 10:00:00           # time requested in hour:minute:second
+#SBATCH --output=results/logs/slurm-%A_%a.out
+#SBATCH --error=results/logs/slurm-%A_%a.err
+#SBATCH -t 4:00:00           # time requested in hour:minute:second
 #SBATCH --mail-type=all       # choice between begin, end, all to notify you via email
-#SBATCH --array=0-99
+#SBATCH --array=0-96
 
 #SBATCH --mail-user=jw7893@princeton.edu
 
@@ -24,8 +24,8 @@ conda activate experiment_project_env
 
 # put the command you want to run here
 
-DATASET="/n/fs/obj-cv/infinigen_project/savedDatasets/kitchenDataset94"
-OUTPUT="/n/fs/obj-cv/experiment_project/experiments/objRemovalExp/results2"
+DATASET="/n/fs/obj-cv/infinigen_project/savedDatasets/bedroom96"
+OUTPUT="/n/fs/obj-cv/experiment_project/experiments/objRemovalExp/results"
 
 # Change to dataset folder
 cd "$DATASET"

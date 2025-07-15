@@ -1,0 +1,24 @@
+DATASET="/n/fs/obj-cv/infinigen_project/savedDatasets/kitchenDataset94"
+scene_id="1e122544"
+OUTPUT="/n/fs/obj-cv/experiment_project/experiments/objRemovalExp/results"
+cd /n/fs/obj-cv/experiment_project/experiments/objRemovalExp
+python removeObjectsParams.py \
+    --dataset "$DATASET" \
+    --id "$scene_id" \
+    --out "$OUTPUT"
+
+
+scene_id="1f3cc114"
+
+shelf has many small objects
+scene_id="2c653f74"
+
+has kitchen counter and sink side view (use as demo object)
+scene_id="16570afb"
+
+issues with 0 not being in the seg_set. but it is...
+scene_id="12f16d0c"
+scene_id="1420624e"
+scene_id="15ba83e1"
+
+77, 79 took like 2.5 hrs

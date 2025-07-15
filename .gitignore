@@ -12,3 +12,5 @@ experiments/objRemovalExp/results
 experiments/objRemovalExp/results2
 experiments/objRemovalExp/resnet18_places365.pth.tar
 savedRemovals
+# these might be temporary folders
+experiments/objRemovalExp/dataFolder

@@ -1,3 +1,6 @@
+# In objRemovalExp/removeObjectsParams not many functions here are actually used
+# Really only just remove_object_blender_name
+
 import bpy
 from bpy_extras.object_utils import world_to_camera_view
 from mathutils import Vector
@@ -173,6 +176,19 @@ def remove_object(obj_name: str, remove_children: bool = True, solve_state: dict
     # hide them
     for o in objs:
         o.hide_render = True
+    
+    # return the flags
+    return old_flags
+
+def remove_object_blender_name(obj_name: str):
+    """
+    Returns a dict mapping each hidden object → its previous hide_render flag.
+    """    
+    # record old flags
+    old_flags = {o: o.hide_render for o in bpy.data.objects}
+
+    # hide them
+    bpy.data.objects[obj_name].hide_render = True
     
     # return the flags
     return old_flags

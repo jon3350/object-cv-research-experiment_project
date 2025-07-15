@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scene & Image Selector</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+    }
+    select {
+      margin-right: 1rem;
+    }
+    #displayImage {
+      display: block;
+      margin-top: 1rem;
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <label for="sceneSelector">Select a scene:</label>
+  <select id="sceneSelector">
+    <option value="" disabled selected>Choose scene…</option>
+    <option value="Kitchen">Kitchen</option>
+    <option value="LivingRoom">Living Room</option>
+    <option value="Garden">Garden</option>
+    <!-- add more scenes here -->
+  </select>
+
+  <label for="imageSelector">Select an image:</label>
+  <select id="imageSelector" disabled>
+    <option value="" disabled selected>Select scene first</option>
+  </select>
+
+  <img id="displayImage" src="" alt="Your selected image will appear here" />
+
+  <script>
+    // Map each scene name to an array of image filenames (relative paths).
+    /* const sceneImages = {
+      Kitchen: ['knife.png', 'pan.jpg', 'fridge.png'],
+      LivingRoom: ['sofa.jpg', 'tv.png', 'lamp.jpg'],
+      Garden: ['flowers.png', 'path.jpg', 'fountain.png'],
+      // …and so on
+    }; 
+    */
+
+    // THIS COMES FROM JINJA CONTEXT!
+    // `tojson` safely serializes & escapes the dict for JS
+    const sceneImages = {{ scene_id_map | tojson }};
+
+    const sceneSelector = document.getElementById('sceneSelector');
+    const imageSelector = document.getElementById('imageSelector');
+    const img = document.getElementById('displayImage');
+
+    // initalize sceneSelector values
+    sceneSelector.innerHTML = '';
+    Object.keys( sceneImages ).forEach( scene_id => {
+        const opt = document.createElement('option');
+        opt.value = scene_id
+        opt.textContent = scene_id
+        sceneSelector.appendChild(opt)
+    } )
+
+    sceneSelector.addEventListener('change', () => {
+      const scene = sceneSelector.value;
+      const images = sceneImages[scene] || [];
+
+      // Reset image selector
+      imageSelector.innerHTML = '';
+      if (images.length === 0) {
+        imageSelector.disabled = true;
+        imageSelector.innerHTML = '<option value="" disabled selected>No images</option>';
+        img.src = '';
+        img.alt = 'No image to display';
+        return;
+      }
+
+      imageSelector.disabled = false;
+      // Add a placeholder
+      const placeholder = document.createElement('option');
+      placeholder.textContent = 'Choose image…';
+      placeholder.disabled = true;
+      placeholder.selected = true;
+      imageSelector.appendChild(placeholder);
+
+      // Populate with this scene's images
+      images.forEach(filename => {
+        const opt = document.createElement('option');
+        // if your images live in subfolders like images/Kitchen/knife.png, adjust the value:
+        // opt.value = `images/${scene}/${filename}`;
+        opt.value = filename;
+        opt.textContent = filename;
+        imageSelector.appendChild(opt);
+      });
+
+      // Clear any previously displayed image
+      img.src = '';
+      img.alt = 'Select an image';
+    });
+
+    imageSelector.addEventListener('change', () => {
+      const scene = sceneSelector.value;
+      const filename = imageSelector.value;
+      if (!filename) return;
+      // If using subfolders per scene, uncomment & adjust:
+      // const scene = sceneSelector.value;
+      // img.src = `images/${scene}/${filename}`;
+      console.log(`Showing Image: results/${scene}/${filename}`)
+      img.src = `results/${scene}/${filename}`;
+      img.alt = `results/${scene}/${filename}`;
+    });
+  </script>
+</body>
+</html>
