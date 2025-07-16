@@ -12,5 +12,12 @@ experiments/objRemovalExp/results
 experiments/objRemovalExp/results2
 experiments/objRemovalExp/resnet18_places365.pth.tar
 savedRemovals
-# these might be temporary folders
 experiments/objRemovalExp/dataFolder
+
+experiments/equirectangularDataAnalysis/categories_places365.txt
+experiments/equirectangularDataAnalysis/equirectVsNormRawData.csv
+experiments/equirectangularDataAnalysis/objectCount.csv
+experiments/equirectangularDataAnalysis/objectCount2Percent.csv
+experiments/equirectangularDataAnalysis/objectCount5Percent.csv
+experiments/equirectangularDataAnalysis/objectCount10Percent.csv
+experiments/equirectangularDataAnalysis/resnet18_places365.pth.tar

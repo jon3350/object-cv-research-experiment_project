@@ -247,9 +247,10 @@ class placesCNN():
 
 
 #----------------------------------------------------------------------
-def analyze_scene(output_folder, dataset_path, scene_id, CNN, data_table):
+def analyze_scene(output_folder, dataset_path, scene_id, ground_id, CNN, data_table):
     """
-    Given the output_folder, dataset_path, scene_id, CNN, and data_table
+    TICKET: ADDED ground_id
+    Given the output_folder, dataset_path, scene_id, CNN, ground_id, and data_table
 
     Adds rows to the data_table for every image in the scene. ie Mutates data_table
 
@@ -414,7 +415,7 @@ if __name__=="__main__":
         # if index==2:
         #     print("Early Break Scheduled", file=sys.stderr)
         #     break
-        analyze_scene(output_folder, dataset_path, scene_id, CNN, data_table) # updates data_table
+        analyze_scene(output_folder, dataset_path, scene_id, ground_id, CNN, data_table) # updates data_table
         print(f"Progress: {index + 1}/{total_scenes} \t Skipped: {skipped_count}", flush=True)
 
     #***********************
