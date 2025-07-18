@@ -146,8 +146,10 @@ def config_GPU_and_render_quality():
 
     # ──────────── 4) Render settings ─────────────
     # 8192 standard but we will use 512 for testing
-    bpy.context.scene.cycles.samples            = 512
-    bpy.context.scene.render.resolution_percentage = 50
+    # bpy.context.scene.cycles.samples            = 512
+    # bpy.context.scene.render.resolution_percentage = 50
+    bpy.context.scene.cycles.samples            = 8192
+    bpy.context.scene.render.resolution_percentage = 100
 
     # ──────────── 5) Print scene & device info ─────────────
     print("Scene name:", bpy.context.scene.name)

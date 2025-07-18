@@ -1,28 +1,29 @@
 scenes:
-  # - name: scene1
-  #   base_path: "/n/fs/obj-cv/infinigen_project/Backups/CopyBackups/BatchTest1/my_dataset/112d1667"
-  #   camera:
-  #     zoom: [ -10, 10, 2 ]
-  #     rotate:
-  #       yaw:   [ -30, 30, 5 ]
-  #       pitch: [ -20, 20, 5 ]
-  #       roll:  [ -20, 20, 5 ]
-  #   objects:
-  #     pick: ["185507_TableDiningFactory", "742563_ChairFactory", "762521_LargeShelfFactory"]
-  #     rotate: [-30, 30, 10]
-  #     slide: [-0.5, 0.5, 0.1]
   - name: scene1
     base_path: "/n/fs/obj-cv/experiment_project/experiments/blenderTransformsTester/TrimmedDataset1/112d1667"
     results_path: "/n/fs/obj-cv/experiment_project/experiments/blenderTransformsTester/results"
     camera:
-      zoom: [ -10, 10, 20 ]
+      zoom: [ -10, 10, 2 ]
       rotate:
-        yaw:   [ -30, 30, 60 ]
-        pitch: [ -20, 20, 40 ]
-        roll:  [ -20, 20, 40 ]
+        yaw:   [ -30, 30, 5 ]
+        pitch: [ -20, 20, 5 ]
+        roll:  [ -20, 20, 5 ]
     objects:
-      # pick: ["185507_TableDiningFactory", "742563_ChairFactory", "762521_LargeShelfFactory"]
-      pick: ["185507_TableDiningFactory"]
-      rotate: [-90, 90, 45]
-      slide: [-0.5, 0.5, 1]
+      pick: ["185507_TableDiningFactory", "742563_ChairFactory", "762521_LargeShelfFactory"]
+      rotate: [-30, 30, 10]
+      slide: [-0.5, 0.5, 0.1]
+  # - name: scene1
+  #   base_path: "/n/fs/obj-cv/experiment_project/experiments/blenderTransformsTester/TrimmedDataset1/112d1667"
+  #   results_path: "/n/fs/obj-cv/experiment_project/experiments/blenderTransformsTester/results"
+  #   camera:
+  #     zoom: [ -10, 10, 20 ]
+  #     rotate:
+  #       yaw:   [ -30, 30, 60 ]
+  #       pitch: [ -20, 20, 40 ]
+  #       roll:  [ -20, 20, 40 ]
+  #   objects:
+  #     # pick: ["185507_TableDiningFactory", "742563_ChairFactory", "762521_LargeShelfFactory"]
+  #     pick: ["185507_TableDiningFactory"]
+  #     rotate: [-90, 90, 45]
+  #     slide: [-0.5, 0.5, 1]
 

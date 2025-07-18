@@ -3,8 +3,8 @@ import os
 from jinja2 import Template
 
 # paths
-TSV_FILE = "/n/fs/obj-cv/places365_project/experiment_site_2/transformedImages_places365_predictions.tsv"
-IMAGE_DIR = "IMAGE_DIR"
+TSV_FILE = "/n/fs/obj-cv/experiment_project/experiments/places365Tester/transformedImages_places365_predictions.tsv"
+IMAGE_DIR = "results"
 OUTPUT_HTML = "report.html"
 
 df = pd.read_csv(TSV_FILE, sep='\t')

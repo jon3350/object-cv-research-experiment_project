@@ -21,3 +21,16 @@ experiments/equirectangularDataAnalysis/objectCount2Percent.csv
 experiments/equirectangularDataAnalysis/objectCount5Percent.csv
 experiments/equirectangularDataAnalysis/objectCount10Percent.csv
 experiments/equirectangularDataAnalysis/resnet18_places365.pth.tar
+
+experiments/lowVsHighQualTest/resnet18_places365.pth.tar
+experiments/places365Tester/report.html
+experiments/places365Tester/transformedImages_places365_predictions_HighQuality.tsv
+experiments/places365Tester/transformedImages_places365_predictions_LowQuality.tsv
+
+
+experiments/equirectangularDataAnalysis/*.png
+experiments/dpi_increaser/*.png
+
+
+# temporary
+experiments/objectSwapRelationshipExp

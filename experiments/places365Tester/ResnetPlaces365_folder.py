@@ -50,9 +50,9 @@ with open(file_name) as class_file:
 classes = tuple(classes)
 
 #--- Configs for going through folder ---
-IMAGE_DIR = "/n/fs/obj-cv/experiment_project/experiments/places365Tester/data/places365TestSetHighResLink"
+IMAGE_DIR = "/n/fs/obj-cv/experiment_project/sites/everythingSite/IMAGE_DIR"
 OUTPUT_FILE = "transformedImages_places365_predictions.tsv"
-NUM_FILES = 100
+NUM_FILES = 1000
 
 file_count = 0
 with open(OUTPUT_FILE, "w") as out_f:
