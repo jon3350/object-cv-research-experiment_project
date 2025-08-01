@@ -1,5 +1,6 @@
 data/
 tools/
+**/__pycache__
 experiments/blenderTransformsTester/results/*
 experiments/blenderTransformsTester/TrimmedDataset1/*
 experiments/places365Tester/resnet18_places365.pth.tar
@@ -32,5 +33,13 @@ experiments/equirectangularDataAnalysis/*.png
 experiments/dpi_increaser/*.png
 
 
-# temporary
-experiments/objectSwapRelationshipExp
+experiments/objectSwapRelationshipExp/csvDataTables
+experiments/objectSwapRelationshipExp/goodImages
+experiments/objectSwapRelationshipExp/outdatedBackups
+experiments/objectSwapRelationshipExp/results
+experiments/objectSwapRelationshipExp/utils/categories_places365.txt
+experiments/objectSwapRelationshipExp/utils/resnet18_places365.pth.tar
+experiments/objectSwapRelationshipExp/categories_places365.txt
+experiments/objectSwapRelationshipExp/copypastecmds.txt
+experiments/objectSwapRelationshipExp/resnet18_places365.pth.tar
+experiments/objectSwapRelationshipExp/categories_places365.txt
